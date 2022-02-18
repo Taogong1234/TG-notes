@@ -1,0 +1,20 @@
+tar=cip.exe
+obj=PARAMETERS.o BOUNDARY_CONDITIONS.o VOF_2D.o LS_2D.o FIELD_FILES.o solid.o GAUGE.o  WAVE_MAKER.o\
+GLOBAL.o  Source_wavemake.o NS_SOLVER.o  INTIAL_CONDITION.o   MAIN.o 
+gf=gfortran
+$(tar):$(obj)
+	$(gf) $^  -o $@
+#	$(gf) $(obj)  -o $(tar)
+%.o:%.f90 
+#模式规则即将全部.f90文件生成全部.o文件，makefile中也提供函数，可以了解一下。
+	$(gf) -c $<  -o $@
+# $ 表示在变量中取值
+# $^表示当前全部依赖项
+# $<表示当前第一个依赖项目
+.PHONY:clean
+clean: 
+	rm -f *.o
+	rm -f *.mod
+	rm -f *.exe
+
+

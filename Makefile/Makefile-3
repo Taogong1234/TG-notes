@@ -1,0 +1,11 @@
+run:
+	gfortran -c PARAMETERS.f90 BOUNDARY_CONDITIONS.f90 VOF_2D.f90 LS_2D.f90 FIELD_FILES.f90 solid.f90 GAUGE.f90  WAVE_MAKER.f90 GLOBAL.f90  Source_wavemake.f90 NS_SOLVER.f90  INTIAL_CONDITION.f90 MAIN.f90
+	gfortran -o cip.exe PARAMETERS.o BOUNDARY_CONDITIONS.o VOF_2D.o LS_2D.o FIELD_FILES.o solid.o GAUGE.o  WAVE_MAKER.o GLOBAL.o  Source_wavemake.o NS_SOLVER.o  INTIAL_CONDITION.o MAIN.o
+	#gfortran -o cip.exe *.o 
+#将编译与链接分开有助于提高编译效率，因为没有改动的源码就不会重新编译，只编译改动过的。*.o指代全部.o文件。
+.PHONY:clean
+clean: 
+	rm -f *.o
+	rm -f *.mod
+	rm -f *.exe
+

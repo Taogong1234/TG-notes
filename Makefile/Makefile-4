@@ -1,0 +1,23 @@
+run:
+	gfortran -c PARAMETERS.f90 -o PARAMETERS.o
+	gfortran -c BOUNDARY_CONDITIONS.f90 -o BOUNDARY_CONDITIONS.o
+	gfortran -c VOF_2D.f90 -o VOF_2D.o
+	gfortran -c LS_2D.f90 -o LS_2D.o
+	gfortran -c FIELD_FILES.f90 -o FIELD_FILES.o
+	gfortran -c solid.f90 -o solid.o   #会有警告
+	gfortran -c GAUGE.f90 -o GAUGE.o
+	gfortran -c WAVE_MAKER.f90 -o WAVE_MAKER.o
+	gfortran -c GLOBAL.f90 -o GLOBAL.o
+	gfortran -c Source_wavemake.f90 -o Source_wavemake.o
+	gfortran -c NS_SOLVER.f90 -o NS_SOLVER.o
+	gfortran -c INTIAL_CONDITION.f90 -o INTIAL_CONDITION.o
+	gfortran -c MAIN.f90 -o MAIN.o
+	gfortran -o cip.exe *.o
+.PHONY:clean
+clean: 
+	rm -f *.o
+	rm -f *.mod
+	rm -f *.exe
+
+
+

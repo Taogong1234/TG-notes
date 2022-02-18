@@ -1,0 +1,24 @@
+#makefile-6不适用于cip代码，因为cip代码有编译的顺序要求
+tar=cip.exe
+gf=gfortran
+src=$(wildcard ./*.f90) #wildcard函数取指定目录下的所有.f90文件
+obj=$(patsubst ./%.f90,./%.o,$(src)) #pathsubst函数从src中取值并替换文件名
+$(tar):$(obj)
+	$(gf) $^  -o $@
+#	$(gf) $(obj)  -o $(tar)
+%.o:%.f90 
+	$(gf) -c $<  -o $@
+.PHONY:clean
+clean: 
+	rm -f *.o
+	rm -f *.mod
+	rm -f *.exe
+
+#其他
+#makefile自己的变量，一般全大写字母
+#CC 编译器gcc
+#CPPFLAGS，-I 指定头文件路径  预处理所需要选项
+#CFLAGS，编译所需参数，-WAll 显示全部警告信息 -g 调试信息 
+#LDFLAGS，链接库选项，-L 库路径，-l 库名字
+#makefile自带的变量也可以更改值
+

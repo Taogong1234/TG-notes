@@ -1,0 +1,42 @@
+cip.exe:PARAMETERS.o BOUNDARY_CONDITIONS.o VOF_2D.o LS_2D.o FIELD_FILES.o solid.o GAUGE.o  WAVE_MAKER.o \
+GLOBAL.o  Source_wavemake.o NS_SOLVER.o  INTIAL_CONDITION.o MAIN.o #顺序很重要
+	gfortran -o cip.exe PARAMETERS.o BOUNDARY_CONDITIONS.o VOF_2D.o LS_2D.o FIELD_FILES.o solid.o GAUGE.o  WAVE_MAKER.o \
+GLOBAL.o  Source_wavemake.o NS_SOLVER.o  INTIAL_CONDITION.o MAIN.o #可以用*.o代替所有
+PARAMETERS.o:PARAMETERS.f90
+	gfortran -c PARAMETERS.f90
+BOUNDARY_CONDITIONS.o:BOUNDARY_CONDITIONS.f90
+	gfortran -c BOUNDARY_CONDITIONS.f90
+VOF_2D.o:VOF_2D.f90
+	gfortran -c VOF_2D.f90 
+LS_2D.o:LS_2D.f90
+	gfortran -c LS_2D.f90
+FIELD_FILES.o:FIELD_FILES.f90
+	gfortran -c FIELD_FILES.f90
+solid.o:solid.f90
+	gfortran -c solid.f90
+GAUGE.o:GAUGE.f90
+	gfortran -c GAUGE.f90
+WAVE_MAKER.o:WAVE_MAKER.f90
+	gfortran -c WAVE_MAKER.f90
+GLOBAL.o:GLOBAL.f90
+	gfortran -c GLOBAL.f90
+Source_wavemake.o:Source_wavemake.f90
+	gfortran -c Source_wavemake.f90
+NS_SOLVER.o:NS_SOLVER.f90
+	gfortran -c NS_SOLVER.f90
+INTIAL_CONDITION.o:INTIAL_CONDITION.f90
+	gfortran -c INTIAL_CONDITION.f90
+MAIN.o:MAIN.f90
+	gfortran -c MAIN.f90
+.PHONY:clean #伪目标声明
+clean: 
+	rm -f *.o
+	rm -f *.mod
+	rm -f *.exe
+
+
+
+
+
+
+

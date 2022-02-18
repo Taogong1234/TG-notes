@@ -1,0 +1,12 @@
+run:
+	gfortran -o cip.exe PARAMETERS.f90 BOUNDARY_CONDITIONS.f90 VOF_2D.f90 LS_2D.f90 FIELD_FILES.f90 solid.f90 GAUGE.f90  WAVE_MAKER.f90\
+ GLOBAL.f90  Source_wavemake.f90 NS_SOLVER.f90  INTIAL_CONDITION.f90   MAIN.f90 
+#gfortran默认完成编译与链接，顺序很重要
+#-c 表示完成链接之前的步骤
+#链接不需要选项，-o是定义名称
+.PHONY:clean
+clean: 
+	rm -f *.o
+	rm -f *.mod
+	rm -f *.exe
+
