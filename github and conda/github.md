@@ -1,4 +1,4 @@
-# git conda 杂记
+# git and conda 杂记
 + 克隆仓库：git clone <git地址>
 + 初始化仓库：git init   
 
