@@ -1,0 +1,19 @@
+#静态库编译
+run:
+	gfortran -c PARAMETERS.f90 BOUNDARY_CONDITIONS.f90 VOF_2D.f90 LS_2D.f90 FIELD_FILES.f90 solid.f90 GAUGE.f90  WAVE_MAKER.f90 GLOBAL.f90  Source_wavemake.f90 NS_SOLVER.f90  INTIAL_CONDITION.f90  #生成.o文件,gcc也可以编译
+	ar rcs libmycip.a *o  #打包
+	mv libmycip.a ./lib  #尝试不同的文件夹调用
+	mv *.mod ./include
+	#gfortran -o mycip.exe MAIN.f90 ./libmycip.a #同文件夹下使用
+	gfortran -o mycip.exe MAIN.f90  -L ./lib -l mycip -I include #不同路径下
+	#-I 指定头文件
+	#-L 指定库路径
+	#-l 指定库名，掐头去尾
+	
+.PHONY:clean
+clean: 
+	rm -f *.o
+	rm -f *.mod
+	rm -f *.exe
+	rm -f *.a
+
