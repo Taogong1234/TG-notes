@@ -7,4 +7,4 @@
 7.  清空输出文档 make clean
 8.  新建的文档要在 toctree下面写 该文档名或文件路径
 9.  index.rst 可以申明嵌套
-10. 默认识别rst后缀，markdown需要加插件，并且修改配置文件。
+10. 默认识别rst后缀，markdown需要加插件，并且修改配置文件。[官网教程](https://www.sphinx-doc.org/zh_CN/master/usage/markdown.html#configuration)
